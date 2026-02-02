@@ -118,7 +118,7 @@ const FeaturedProperties = () => {
         >
           <button
             className="primary-btn"
-            onClick={() =>window.open("https://stayaura.com/properties","_blank")}
+            onClick={() => navigate("https://stayaura.com/properties")}
           >
             Explore All Properties
           </button>

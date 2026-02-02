@@ -4,8 +4,9 @@ import {
   heroItem,
   heroOverlay
 } from "../animations/heroMotion";
-
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+  const navigate=useNavigate();
   return (
     <section className="hero hero-bg section">
       <div className="section-container">
@@ -41,10 +42,10 @@ const Hero = () => {
               className="hero-actions"
               variants={heroItem}
             >
-              <button className="primary-btn" onClick={()=>window.open("https://booking.stayaura.com/","_blank")}>
+              <button className="primary-btn" onClick={()=>navigate("https://booking.stayaura.com/")}>
                 Book Your Stay
               </button>
-              <button className="primary-btn outline" onClick={()=>window.open("https://stayaura.com/properties","_blank")}>
+              <button className="primary-btn outline" onClick={()=>navigate("https://stayaura.com/properties")}>
                 Explore Properties
               </button>
             </motion.div>

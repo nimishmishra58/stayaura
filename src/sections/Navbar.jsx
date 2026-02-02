@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SideNav from "./SideNav";
 import logoImage from "/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     return (
         <>
             <header className="navbar">
@@ -25,12 +27,9 @@ const Navbar = () => {
                     {/* RIGHT: ACTIONS */}
 
                     <div className="nav-actions">
-                        <button className="primary-btn">Let Your Property</button>
-                        <button className="primary-btn" onClick={()=>window.open("https://booking.stayaura.com/", "_blank")}>Book Your Stay</button>
-
+                        <button className="primary-btn" onClick={()=>{}}>Let Your Property</button>
+                        <button className="primary-btn" onClick={()=>navigate("https://booking.stayaura.com/")}>Book Your Stay</button>
                     </div>
-
-
                 </div>
 
 
