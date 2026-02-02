@@ -3,7 +3,7 @@ import {
   heroContainer,
   heroItem,
   heroOverlay
-} from "../animations/HeroMotion";
+} from "../animations/heroMotion";
 
 const Hero = () => {
   return (
