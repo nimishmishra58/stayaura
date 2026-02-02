@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="site-footer">
@@ -63,8 +64,8 @@ const Footer = () => {
           <span>© {new Date().getFullYear()} StayAura. All rights reserved.</span>
 
           <div className="footer-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/cookie">Cookie Policy</a>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/cookie">Cookie Policy</Link>
           </div>
 
           <div className="footer-social">
