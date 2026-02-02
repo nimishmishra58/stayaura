@@ -37,21 +37,21 @@ const properties = [
     title: "Modern Studio Apartment",
     location: "Central London",
     price: "From £95 / night",
-    image: "/public/property1.png",
+    image: "/property1.png",
   },
   {
     id: 2,
     title: "Luxury One Bed Apartment",
     location: "Canary Wharf",
     price: "From £120 / night",
-    image: "/public/property2.png",
+    image: "/property2.png",
   },
   {
     id: 3,
     title: "Serviced City Apartment",
     location: "Manchester City Centre",
     price: "From £85 / night",
-    image: "/public/property3.png",
+    image: "/property3.png",
   },
 ];
 
