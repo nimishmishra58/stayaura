@@ -141,15 +141,6 @@ const ChatbotWidget = () => {
           <p className="chatbot-subtext">
             Add your message, then choose where you want to send it.
           </p>
-          <p className="chatbot-contact-line">
-            <strong>Email:</strong> info@stayaura.com
-          </p>
-          <p className="chatbot-contact-line">
-            <strong>Phone:</strong> 020 4538 0200
-          </p>
-          <p className="chatbot-contact-line">
-            <strong>WhatsApp:</strong> 07576 420200
-          </p>
 
           <div className="chatbot-form">
             <input
