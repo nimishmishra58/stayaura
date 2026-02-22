@@ -1,0 +1,160 @@
+.enquire-section {
+  background: #f5f7f8;
+  padding: 100px 0;
+}
+
+.enquire-section .container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.enquire-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 36px;
+}
+
+.enquire-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.enquire-left h3 {
+  font-size: 1.45rem;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+
+.enquire-left {
+  align-self: center;
+}
+
+.enquire-left p {
+  color: #475569;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.enquire-tag {
+  color: #0f766e;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.enquire-header h2 {
+  font-size: 42px;
+  margin: 12px 0;
+  color: #0f172a;
+}
+
+.enquire-header p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.enquire-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  max-width: 420px;
+  text-align: left;
+}
+
+.enquire-benefits li {
+  margin-bottom: 8px;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.enquire-form {
+  background: #fff;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  max-width: 760px;
+  margin: 0 0 0 auto;
+}
+
+.enquire-form .form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.enquire-form .form-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.enquire-form input,
+.enquire-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 15px;
+}
+
+.enquire-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 15px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.enquire-form select {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.enquire-form .full {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.enquire-btn {
+  width: 100%;
+  padding: 16px;
+  background: #0f766e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.enquire-btn:hover {
+  background: #0d5f59;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .enquire-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .enquire-header h2 {
+    font-size: 32px;
+  }
+
+  .enquire-form .form-row {
+    flex-direction: column;
+  }
+
+  .enquire-form {
+    margin: 0 auto;
+  }
+}

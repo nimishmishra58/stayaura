@@ -1,0 +1,16 @@
+.cookie-policy {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.8;
+}
+
+.cookie-policy p,
+.cookie-policy li,
+.cookie-policy strong,
+.cookie-policy h2,
+.cookie-policy h3 {
+  color: #fff;
+}

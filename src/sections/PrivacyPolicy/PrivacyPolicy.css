@@ -1,0 +1,21 @@
+.privacy-policy {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.8;
+}
+
+.privacy-policy h1 {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.privacy-policy p,
+.privacy-policy li,
+.privacy-policy strong,
+.privacy-policy h2,
+.privacy-policy h3 {
+  color: #fff;
+}

@@ -1,0 +1,6 @@
+<svg width="420" height="120" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="120" rx="16" fill="white"/>
+  <path d="M75 84C68 84 62 78 62 70C62 60 70 52 80 52C90 52 98 60 98 70C98 78 92 84 85 84H75Z" fill="#FF5A5F"/>
+  <path d="M54 46C54 31 65 20 80 20C95 20 106 31 106 46V47C106 53 104 60 100 65L80 95L60 65C56 60 54 53 54 47V46Z" stroke="#FF5A5F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="138" y="74" fill="#FF5A5F" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">airbnb</text>
+</svg>

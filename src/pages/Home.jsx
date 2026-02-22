@@ -1,22 +1,12 @@
-import Navbar from "../sections/Navbar";
-import Hero from "../sections/Hero";
-import TrustBar from "../sections/TrustBar";
-import About from "../sections/About";
-import WhyUs from "../sections/WhoStays";
-import Services from "../sections/Services";
-import HowItWorks from "../sections/HowItWorks";
-import Properties from "../sections/Properties";
-import Testimonials from "../sections/Testimonials";
-import FAQ from "../sections/FAQ";
-import CTA from "../sections/CTA";
-import Footer from "../sections/Footer";
-import FeaturedProperties from "../sections/FeaturedProperties";
-import WhyStay from "../sections/WhyStay";
-import GuestReviews from "../sections/GuestReviews";
-import ContactUs from "../sections/ContactUs";
-import BookingPartners from "../sections/BookingPartners";
-import CorporateHousing from "../sections/CorporateHousing";
-import WhoStays from "../sections/WhoStays";
+import Hero from "../sections/Hero/Hero";
+import FAQ from "../sections/FAQ/FAQ";
+import FeaturedProperties from "../sections/FeaturedProperties/FeaturedProperties";
+import WhyStay from "../sections/WhyStay/WhyStay";
+import GuestReviews from "../sections/GuestReviews/GuestReviews";
+import BookingPartners from "../sections/BookingPartners/BookingPartners";
+import CorporateHousing from "../sections/CorporateHousing/CorporateHousing";
+import WhoStays from "../sections/WhoStays/WhoStays";
+import EnquireNow from "../sections/EnquireNow/EnquireNow";
 
 const Home = () => {
   return (
@@ -24,14 +14,12 @@ const Home = () => {
       <Hero />
       <FeaturedProperties />
       <WhoStays />
-
-        <BookingPartners />
-
+      <BookingPartners />
       <WhyStay />
       <CorporateHousing />
       <GuestReviews />
       <FAQ />
-      <ContactUs />
+      <EnquireNow />
     </>
   );
 };

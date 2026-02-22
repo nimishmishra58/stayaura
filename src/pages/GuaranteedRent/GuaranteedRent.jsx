@@ -1,4 +1,10 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import "./GuaranteedRent.css";
+import { apiUrl } from "../../config/api";
+import StatusPopup from "../../components/StatusPopup/StatusPopup";
+import { getErrorMessage } from "../../utils/http";
+
 const benefits = [
   {
     icon: "fa-sterling-sign",
@@ -66,6 +72,94 @@ const HOW_IT_WORKS = [
 
 
 const GuaranteedRent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    propertyAddress: "",
+    notes: "",
+  });
+  const [images, setImages] = useState([]);
+  const [popup, setPopup] = useState({
+    open: false,
+    type: "success",
+    title: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    if (!isModalOpen) return undefined;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setIsModalOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isModalOpen]);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleImagesChange = (e) => {
+    const selected = Array.from(e.target.files || []);
+    setImages(selected);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      Object.entries(form).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append("enquiryType", "landlord");
+      formData.append("emailSubject", "New Landlord Enquiry");
+      formData.append("service", "Guaranteed Rent");
+      images.forEach((file) => formData.append("images", file));
+
+      const res = await fetch(apiUrl("/api/enquiry"), {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorMessage = await getErrorMessage(res, "Failed to submit enquiry");
+        throw new Error(errorMessage);
+      }
+
+      setPopup({
+        open: true,
+        type: "success",
+        title: "Enquiry Sent",
+        message: "Your guaranteed rent enquiry has been submitted.",
+      });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        propertyAddress: "",
+        notes: "",
+      });
+      setImages([]);
+      closeModal();
+    } catch (err) {
+      console.error(err);
+      setPopup({
+        open: true,
+        type: "error",
+        title: "Submission Failed",
+        message: err.message || "Error sending enquiry",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="service-page">
@@ -93,7 +187,7 @@ const GuaranteedRent = () => {
             responsibility for managing the property.
           </p>
 
-          <button className="primary-btn">
+          <button className="primary-btn" onClick={openModal}>
             Enquire About Guaranteed Rent
           </button>
         </div>
@@ -342,13 +436,109 @@ const GuaranteedRent = () => {
     </p>
 
     <div className="cta-actions">
-      <button className="primary-btn">Get Your Guaranteed Rent Offer</button>
+      <button className="primary-btn" onClick={openModal}>
+        Get Your Guaranteed Rent Offer
+      </button>
       <span className="cta-subtext">
         No obligation • Free property assessment
       </span>
     </div>
   </div>
 </section>
+
+      {isModalOpen && (
+        <div className="gr-modal-overlay" onClick={closeModal}>
+          <div
+            className="gr-modal"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Guaranteed rent enquiry form"
+          >
+            <button
+              className="gr-modal-close"
+              type="button"
+              aria-label="Close enquiry form"
+              onClick={closeModal}
+            >
+              ×
+            </button>
+
+            <h3>Guaranteed Rent Enquiry</h3>
+            <p>Share your property details and upload images if available.</p>
+
+            <form className="gr-modal-form" onSubmit={handleSubmit}>
+              <div className="gr-modal-row">
+                <input
+                  name="name"
+                  placeholder="Full Name*"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email*"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="gr-modal-row">
+                <input
+                  name="phone"
+                  placeholder="Phone*"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  name="propertyAddress"
+                  placeholder="Property Address*"
+                  value={form.propertyAddress}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <textarea
+                name="notes"
+                rows={4}
+                placeholder="Additional Notes"
+                value={form.notes}
+                onChange={handleChange}
+              />
+
+              <label className="gr-file-label" htmlFor="gr-images">
+                Property Images (optional)
+              </label>
+              <input
+                id="gr-images"
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleImagesChange}
+              />
+              {images.length > 0 && (
+                <p className="gr-file-help">{images.length} image(s) selected</p>
+              )}
+
+              <button className="primary-btn gr-modal-submit" disabled={loading}>
+                {loading ? "Sending..." : "Send Enquiry"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+      <StatusPopup
+        open={popup.open}
+        type={popup.type}
+        title={popup.title}
+        message={popup.message}
+        onClose={() => setPopup((prev) => ({ ...prev, open: false }))}
+      />
 
     </div>
   );
