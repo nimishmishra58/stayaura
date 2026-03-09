@@ -8,7 +8,6 @@ const ChatbotWidget = () => {
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
-  const [socialNotice, setSocialNotice] = useState(null);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
@@ -113,15 +112,6 @@ const ChatbotWidget = () => {
     copyMessage(latestMessage);
   };
 
-  const handleSocialChannel = async (channelName, url) => {
-    const didCopy = await copyMessage(getLatestComposedMessage());
-    setSocialNotice({
-      channelName,
-      url,
-      copied: didCopy,
-    });
-  };
-
   return (
     <div className={`chatbot-widget ${open ? "open" : ""}`}>
       {open && (
@@ -187,9 +177,10 @@ const ChatbotWidget = () => {
               type="button"
               className="chatbot-btn facebook"
               onClick={() =>
-                handleSocialChannel(
-                  "Facebook",
+                openChannel(
                   "https://www.facebook.com/share/1GYZq8xG1n/?mibextid=wwXIfr"
+                  ,
+                  true
                 )
               }
             >
@@ -200,9 +191,9 @@ const ChatbotWidget = () => {
               type="button"
               className="chatbot-btn instagram"
               onClick={() =>
-                handleSocialChannel(
-                  "Instagram",
+                openChannel(
                   "https://www.instagram.com/stay.aura.ltd?igsh=MTR4cjVzcmVjYjBqcQ%3D%3D&utm_source=qr",
+                  true
                 )
               }
             >
@@ -221,49 +212,6 @@ const ChatbotWidget = () => {
               Could not auto-copy. Please copy your message manually.
             </p>
           )}
-        </div>
-      )}
-
-      {socialNotice && (
-        <div className="chatbot-social-notice-overlay">
-          <div className="chatbot-social-notice">
-            <div className="chatbot-social-header">
-              <span className="chatbot-social-icon">
-                <i className="fa-solid fa-copy" />
-              </span>
-              <div>
-                <h5>Ready to continue to {socialNotice.channelName}</h5>
-                <p className="chatbot-social-status">
-                  {socialNotice.copied
-                    ? "Message copied to clipboard."
-                    : "Could not copy automatically."}
-                </p>
-              </div>
-            </div>
-            <p className="chatbot-social-description">
-              {socialNotice.channelName} does not support pre-typed messages from websites.
-              Open {socialNotice.channelName} and paste your message in chat.
-            </p>
-            <div className="chatbot-social-actions">
-              <button
-                type="button"
-                className="chatbot-social-btn muted"
-                onClick={() => setSocialNotice(null)}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="chatbot-social-btn"
-                onClick={() => {
-                  window.open(socialNotice.url, "_blank", "noopener,noreferrer");
-                  setSocialNotice(null);
-                }}
-              >
-                Continue
-              </button>
-            </div>
-          </div>
         </div>
       )}
 
