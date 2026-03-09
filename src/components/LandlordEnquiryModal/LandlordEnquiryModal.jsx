@@ -157,7 +157,7 @@ const LandlordEnquiryModal = ({
           <textarea
             name="notes"
             rows={4}
-            placeholder="Additional Notes"
+            placeholder="Additional Notes: How many bedrooms/bathrooms..."
             value={form.notes}
             onChange={handleChange}
           />

@@ -25,12 +25,12 @@ const Navbar = () => {
                         <button className="menu-btn" onClick={() => setOpen(true)}>
                             <i className="fas fa-bars"></i>
                         </button>
-                        <div className="logo-image">
+                        <button className="logo-image" onClick={() => navigate("/")}>
                             <img
                                 src={logoImage}
                                 alt="StayAura Logo"
                             />
-                        </div>
+                        </button>
                     </div>
 
                     {/* RIGHT: ACTIONS */}
