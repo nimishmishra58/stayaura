@@ -56,7 +56,7 @@ const Hero = () => {
                 className="primary-btn outline"
                 onClick={() =>
                   navigate(
-                    "https://booking.stayaura.com/listings?city=&check_in=&check_out=&number_of_guests=1&min_price=&max_price="
+                    "https://bookingatstayaura.com/en/all-properties"
                   )
                 }
               >
