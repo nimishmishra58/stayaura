@@ -37,31 +37,31 @@ const properties = [
     id: 1,
     title: "Lovely 2 Bed & 2 Bath in Brentford",
     location: "Brentford, Greater London",
-    price: "2 bed • 2 bath • 10 min stadium",
+    price: "2 Bed & 2 Bath 10 min to Stadium",
     image: "/properties/tw8-featured.jpeg",
     tag: "Book Direct",
     bookingUrl:
-      "https://booking.stayaura.com/greater-london/lovely-2-bed-%2526-2-bath-in-brentford%252C-10-min-stadium/a2c431?number_of_guests=1",
+      "https://bookingatstayaura.com/en/2bdr-apartment-in-london-by-stay-aura-short-lets-agency"
   },
   {
     id: 2,
     title: "Luxury 2 Bedroom with En Suite",
     location: "Brighton and Hove",
-    price: "5 min to beach",
+    price: "Spacious 2 Bed Flat close to Beach",
     image: "/properties/bn1-featured.jpeg",
     tag: "Book Direct",
     bookingUrl:
-      "https://booking.stayaura.com/brighton-and-hove/luxury-2-bedroom-with-en-suite-%257C-5-min-to-beach/379a0b?number_of_guests=1",
+      "https://bookingatstayaura.com/en/2-bedroom-flat-by-stay-aura-short-lets-agency-brighton"
   },
   {
     id: 3,
     title: "Flat 3 - 68 Marine Parade",
     location: "Brighton and Hove",
-    price: "Marine Parade serviced stay",
+    price: "Marine Parade - Beach Front View",
     image: "/properties/bn2-featured.jpeg",
     tag: "Book Direct",
     bookingUrl:
-      "https://booking.stayaura.com/brighton-and-hove/flat-3---68-marine-parade/df10a5?number_of_guests=1",
+      "https://bookingatstayaura.com/en/premium-beach-front-with-balcony-in-brighton"
   },
 ];
 
@@ -142,8 +142,8 @@ const FeaturedProperties = () => {
           <button
             className="primary-btn"
             onClick={() =>
-              (window.location.href =
-                "https://booking.stayaura.com/listings?city=&check_in=&check_out=&number_of_guests=1&min_price=&max_price=")
+            (window.location.href =
+              "https://bookingatstayaura.com/en/all-properties")
             }
           >
             Explore All Properties
