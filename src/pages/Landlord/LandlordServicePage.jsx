@@ -4,6 +4,11 @@ import "./LandlordServicePage.css";
 import { apiUrl } from "../../config/api";
 import StatusPopup from "../../components/StatusPopup/StatusPopup";
 import { getErrorMessage } from "../../utils/http";
+import {
+  ENQUIRY_IMAGE_LIMIT,
+  ENQUIRY_IMAGE_MAX_SIZE_MB,
+  validateEnquiryImages,
+} from "../../utils/enquiryUploads";
 
 const LandlordServicePage = ({ content }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +21,7 @@ const LandlordServicePage = ({ content }) => {
     notes: "",
   });
   const [images, setImages] = useState([]);
+  const [imageError, setImageError] = useState("");
   const [popup, setPopup] = useState({
     open: false,
     type: "success",
@@ -41,6 +47,16 @@ const LandlordServicePage = ({ content }) => {
 
   const handleImagesChange = (e) => {
     const selectedFiles = Array.from(e.target.files || []);
+    const validationError = validateEnquiryImages(selectedFiles);
+
+    if (validationError) {
+      setImageError(validationError);
+      setImages([]);
+      e.target.value = "";
+      return;
+    }
+
+    setImageError("");
     setImages(selectedFiles);
   };
 
@@ -85,6 +101,7 @@ const LandlordServicePage = ({ content }) => {
         notes: "",
       });
       setImages([]);
+      setImageError("");
       closeModal();
     } catch (err) {
       console.error(err);
@@ -277,9 +294,14 @@ const LandlordServicePage = ({ content }) => {
                 accept="image/*"
                 onChange={handleImagesChange}
               />
+              <p className="lsp-file-help">
+                Up to {ENQUIRY_IMAGE_LIMIT} images, {ENQUIRY_IMAGE_MAX_SIZE_MB}MB each. Images are attached to the
+                email only and are not stored after sending.
+              </p>
               {images.length > 0 && (
                 <p className="lsp-file-help">{images.length} image(s) selected</p>
               )}
+              {imageError && <p className="lsp-file-help error">{imageError}</p>}
 
               <button className="primary-btn lsp-modal-submit" disabled={loading}>
                 {loading ? "Sending..." : "Send Enquiry"}

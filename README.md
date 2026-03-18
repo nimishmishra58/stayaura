@@ -1,15 +1,15 @@
-# React + Vite
+# Stayaura Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for the Stayaura website, built with React and Vite.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies and start the dev server:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
 ## Environment variables
 
@@ -19,8 +19,30 @@ Create a `.env` file based on `.env.example`:
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-For production (Vercel), set `VITE_API_BASE_URL` to your deployed backend URL.
+For production, set `VITE_API_BASE_URL` to your deployed backend URL, for example:
 
-## Expanding the ESLint configuration
+```bash
+VITE_API_BASE_URL=https://api.yourdomain.com
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deploying the frontend
+
+This app builds to static files in `dist/`, so you can deploy it to any static host and connect it to a separate backend through `VITE_API_BASE_URL`.
+
+### Cloudflare Pages
+
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Environment variable: `VITE_API_BASE_URL=https://your-backend-url`
+
+The repo includes [`public/_redirects`](/Users/nimishamishra/stayaura-web/public/_redirects) so client-side routes rewrite to `index.html` after build.
+
+### Other hosts
+
+You can also deploy this app on Cloudflare Pages, Render Static Sites, GitHub Pages, or any Nginx-based static host. The important pieces are:
+
+- Run `npm run build`
+- Serve the generated `dist/` folder
+- Add an SPA fallback that rewrites unknown routes to `index.html`
+- Set `VITE_API_BASE_URL` to the backend you want this frontend to call

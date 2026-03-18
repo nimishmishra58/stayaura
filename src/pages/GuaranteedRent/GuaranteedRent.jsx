@@ -4,6 +4,11 @@ import "./GuaranteedRent.css";
 import { apiUrl } from "../../config/api";
 import StatusPopup from "../../components/StatusPopup/StatusPopup";
 import { getErrorMessage } from "../../utils/http";
+import {
+  ENQUIRY_IMAGE_LIMIT,
+  ENQUIRY_IMAGE_MAX_SIZE_MB,
+  validateEnquiryImages,
+} from "../../utils/enquiryUploads";
 
 const benefits = [
   {
@@ -82,6 +87,7 @@ const GuaranteedRent = () => {
     notes: "",
   });
   const [images, setImages] = useState([]);
+  const [imageError, setImageError] = useState("");
   const [popup, setPopup] = useState({
     open: false,
     type: "success",
@@ -107,6 +113,16 @@ const GuaranteedRent = () => {
 
   const handleImagesChange = (e) => {
     const selected = Array.from(e.target.files || []);
+    const validationError = validateEnquiryImages(selected);
+
+    if (validationError) {
+      setImageError(validationError);
+      setImages([]);
+      e.target.value = "";
+      return;
+    }
+
+    setImageError("");
     setImages(selected);
   };
 
@@ -147,6 +163,7 @@ const GuaranteedRent = () => {
         notes: "",
       });
       setImages([]);
+      setImageError("");
       closeModal();
     } catch (err) {
       console.error(err);
@@ -521,9 +538,14 @@ const GuaranteedRent = () => {
                 accept="image/*"
                 onChange={handleImagesChange}
               />
+              <p className="gr-file-help">
+                Up to {ENQUIRY_IMAGE_LIMIT} images, {ENQUIRY_IMAGE_MAX_SIZE_MB}MB each. Images are attached to the
+                email only and are not stored after sending.
+              </p>
               {images.length > 0 && (
                 <p className="gr-file-help">{images.length} image(s) selected</p>
               )}
+              {imageError && <p className="gr-file-help error">{imageError}</p>}
 
               <button className="primary-btn gr-modal-submit" disabled={loading}>
                 {loading ? "Sending..." : "Send Enquiry"}

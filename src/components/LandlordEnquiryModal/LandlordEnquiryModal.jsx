@@ -3,6 +3,11 @@ import "./LandlordEnquiryModal.css";
 import { apiUrl } from "../../config/api";
 import StatusPopup from "../StatusPopup/StatusPopup";
 import { getErrorMessage } from "../../utils/http";
+import {
+  ENQUIRY_IMAGE_LIMIT,
+  ENQUIRY_IMAGE_MAX_SIZE_MB,
+  validateEnquiryImages,
+} from "../../utils/enquiryUploads";
 
 const LandlordEnquiryModal = ({
   isOpen,
@@ -20,6 +25,7 @@ const LandlordEnquiryModal = ({
     notes: "",
   });
   const [images, setImages] = useState([]);
+  const [imageError, setImageError] = useState("");
   const [popup, setPopup] = useState({
     open: false,
     type: "success",
@@ -43,7 +49,18 @@ const LandlordEnquiryModal = ({
   };
 
   const handleImagesChange = (e) => {
-    setImages(Array.from(e.target.files || []));
+    const nextImages = Array.from(e.target.files || []);
+    const validationError = validateEnquiryImages(nextImages);
+
+    if (validationError) {
+      setImageError(validationError);
+      setImages([]);
+      e.target.value = "";
+      return;
+    }
+
+    setImageError("");
+    setImages(nextImages);
   };
 
   const handleSubmit = async (e) => {
@@ -84,6 +101,7 @@ const LandlordEnquiryModal = ({
         notes: "",
       });
       setImages([]);
+      setImageError("");
     } catch (err) {
       console.error(err);
       setPopup({
@@ -173,9 +191,15 @@ const LandlordEnquiryModal = ({
             onChange={handleImagesChange}
           />
 
+          <p className="landlord-file-help">
+            Up to {ENQUIRY_IMAGE_LIMIT} images, {ENQUIRY_IMAGE_MAX_SIZE_MB}MB each. Images are attached to the
+            email only and are not stored after sending.
+          </p>
+
           {images.length > 0 && (
             <p className="landlord-file-help">{images.length} image(s) selected</p>
           )}
+          {imageError && <p className="landlord-file-help error">{imageError}</p>}
 
           <button className="primary-btn landlord-modal-submit" disabled={loading}>
             {loading ? "Sending..." : "Send Enquiry"}

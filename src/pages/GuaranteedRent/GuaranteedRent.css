@@ -273,7 +273,7 @@
 .how-it-works {
   padding: 100px 0;
   background: linear-gradient(rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.96)),
-    url("/services/guaranteed-rent/how-it-works-bg.jpg");
+    url("/guaranteed-rent/peace-of-mind.png");
   background-size: cover;
   background-position: center;
 }
@@ -334,7 +334,7 @@
   position: relative;
   padding: 120px 20px;
   background: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)),
-    url("/services/guaranteed-rent/cta-bg.jpg");
+    url("/guaranteed-rent/hero.png");
   background-size: cover;
   background-position: center;
   color: #ffffff;
