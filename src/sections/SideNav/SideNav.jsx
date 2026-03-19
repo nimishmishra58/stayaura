@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import "./SideNav.css";
+import { useNavigate } from "react-router-dom";
 
 const SideNav = ({ open, onClose, onLetYourProperty }) => {
   const [landlordsOpen, setLandlordsOpen] = useState(false);
+  const navigate=useNavigate();
 
   return (
     <AnimatePresence>
@@ -138,7 +140,7 @@ const SideNav = ({ open, onClose, onLetYourProperty }) => {
               >
                 Let Your Property
               </button>
-              <button className="primary-btn full">
+              <button className="primary-btn full" onClick={()=>navigate("https://bookingatstayaura.com/en/all-properties")}>
                 Book Your Stay
               </button>
             </div>

@@ -37,7 +37,7 @@ const Navbar = () => {
 
                     <div className="nav-actions">
                         <button className="primary-btn" onClick={openLandlordModal}>Let Your Property</button>
-                        <button className="primary-btn" onClick={()=>navigate("https://booking.stayaura.com/")}>Book Your Stay</button>
+                        <button className="primary-btn" onClick={()=>navigate("https://bookingatstayaura.com/en/all-properties")}>Book Your Stay</button>
                     </div>
                 </div>
 

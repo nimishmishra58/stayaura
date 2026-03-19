@@ -49,7 +49,7 @@ const Hero = () => {
               className="hero-actions"
               variants={heroItem}
             >
-              <button className="primary-btn" onClick={()=>navigate("https://booking.stayaura.com/")}>
+              <button className="primary-btn" onClick={()=>navigate("https://bookingatstayaura.com/en/all-properties")}>
                 Book Your Stay
               </button>
               <button
