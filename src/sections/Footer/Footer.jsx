@@ -22,7 +22,7 @@ const Footer = () => {
             <h4>Guests</h4>
             <ul>
               <li>
-                <a href="https://booking.stayaura.com/listings?city=&check_in=&check_out=&number_of_guests=1&min_price=&max_price=">
+                <a href="https://bookingatstayaura.com/en/all-properties" target="_blank" rel="noopener noreferrer">
                   Browse Properties
                 </a>
               </li>
@@ -57,11 +57,11 @@ const Footer = () => {
               </li>
               <li>
                 <i className="fa-solid fa-location-dot" />
-                United Kingdom
+                Surrey, United Kingdom
               </li>
             </ul>
           </div>
-
+    
         </div>
 
         {/* Bottom */}
