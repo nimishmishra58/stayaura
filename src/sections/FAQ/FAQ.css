@@ -37,10 +37,20 @@
   padding: 0 24px 20px;
 }
 
-.faq-answer p {
+.faq.section-dark .faq-answer p {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #474754;
   line-height: 1.6;
+}
+
+.faq-answer a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq-answer a:hover {
+  color: #0846a5;
 }
 
 @media (max-width: 640px) {

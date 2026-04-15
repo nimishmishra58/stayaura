@@ -5,8 +5,19 @@ import "./FAQ.css";
 const faqs = [
   {
     question: "How do I book a stay with StayAura?",
-    answer:
-      "You can browse available properties, select your preferred dates, and complete your booking securely online in just a few steps.",
+    answer: (
+      <>
+        You can browse available properties, select your preferred dates, and
+        complete your booking securely online in just a few steps.{" "}
+        <a
+          href="https://bookingatstayaura.com/en/all-properties"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View all properties
+        </a>
+      </>
+    ),
   },
   {
     question: "Are StayAura properties fully furnished?",

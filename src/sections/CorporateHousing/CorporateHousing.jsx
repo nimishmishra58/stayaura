@@ -98,7 +98,7 @@ const CorporateHousing = () => {
                   <span>Properties</span>
                 </div>
                 <div>
-                  <strong>30+</strong>
+                  <strong>100+</strong>
                   <span>Corporate Clients</span>
                 </div>
                 <div>
